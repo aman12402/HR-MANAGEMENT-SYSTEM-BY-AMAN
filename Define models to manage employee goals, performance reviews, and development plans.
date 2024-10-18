@@ -1,0 +1,18 @@
+# models.py (Performance Service)
+from django.db import models
+
+class Goal(models.Model):
+    employee = models.ForeignKey('employee.Employee', on_delete=models.CASCADE)
+    goal_description = models.TextField()
+    due_date = models.DateField()
+
+class PerformanceReview(models.Model):
+    employee = models.ForeignKey('employee.Employee', on_delete=models.CASCADE)
+    review_date = models.DateField()
+    comments = models.TextField()
+    rating = models.IntegerField()
+
+class DevelopmentPlan(models.Model):
+    employee = models.ForeignKey('employee.Employee', on_delete=models.CASCADE)
+    plan_description = models.TextField()
+    target_completion_date = models.DateField()
