@@ -1,0 +1,14 @@
+# models.py (Employee Service)
+from django.db import models
+
+class Employee(models.Model):
+    name = models.CharField(max_length=255)
+    contact = models.CharField(max_length=100)
+    job_role = models.CharField(max_length=100)
+    salary = models.DecimalField(max_digits=10, decimal_places=2)
+    performance_history = models.TextField()
+
+class Document(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    document_type = models.CharField(max_length=50)
+    document_file = models.FileField(upload_to='documents/')
