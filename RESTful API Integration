@@ -1,0 +1,2 @@
+Expose APIs for Employee Service, Attendance Service, and Performance Service.
+Use JWT Authentication to secure the APIs.
