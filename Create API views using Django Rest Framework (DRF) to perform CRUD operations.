@@ -1,0 +1,12 @@
+# views.py
+from rest_framework import viewsets
+from .models import Employee, Document
+from .serializers import EmployeeSerializer, DocumentSerializer
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+class DocumentViewSet(viewsets.ModelViewSet):
+    queryset = Document.objects.all()
+    serializer_class = DocumentSerializer
