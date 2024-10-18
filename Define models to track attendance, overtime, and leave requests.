@@ -1,0 +1,17 @@
+# models.py (Attendance Service)
+from django.db import models
+from django.contrib.gis.db import models as gis_models
+
+class Attendance(models.Model):
+    employee = models.ForeignKey('employee.Employee', on_delete=models.CASCADE)
+    check_in_time = models.DateTimeField(auto_now_add=True)
+    check_out_time = models.DateTimeField(null=True, blank=True)
+    location = gis_models.PointField()  # Geofencing feature
+    overtime_hours = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+
+class LeaveRequest(models.Model):
+    employee = models.ForeignKey('employee.Employee', on_delete=models.CASCADE)
+    leave_type = models.CharField(max_length=50)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    status = models.CharField(max_length=20, choices=[('Pending', 'Pending'), ('Approved', 'Approved'), ('Rejected', 'Rejected')], default='Pending')
