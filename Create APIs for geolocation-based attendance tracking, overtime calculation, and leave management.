@@ -1,0 +1,12 @@
+# views.py
+from rest_framework import viewsets
+from .models import Attendance, LeaveRequest
+from .serializers import AttendanceSerializer, LeaveRequestSerializer
+
+class AttendanceViewSet(viewsets.ModelViewSet):
+    queryset = Attendance.objects.all()
+    serializer_class = AttendanceSerializer
+
+class LeaveRequestViewSet(viewsets.ModelViewSet):
+    queryset = LeaveRequest.objects.all()
+    serializer_class = LeaveRequestSerializer
